@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var array =new Array([[2,2,3],4,5,5]),// [1,2,78],
+        total1 = 0,
+        total2 = 0;
+    for(var items1 of array[0][0]){
+        total1 += items1;
+    }
+    for(var items2 in array[0][0]){
+        total2 +=  array[0][0][items2];
+    }
+    console.log(total1);
+    console.log(total2);
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js高级语言</title>
+</head>
+<body>
+
+
+
+<script type="text/javascript" src="example.js"></script>
+<script type="text/javascript">
+    //函数提升
+    function doSomething1(){
+        var a=10;
+        function doSomething2() {
+            var b = a;
+            function doSomething3() {
+                c =a ;
+                document.writeln(a);
+
+            }
+            doSomething3();
+        }
+        doSomething2();
+    }
+    //doSomething1();
+    function displayInfo(arg){}
+    displayInfo.prototype.num =100;
+    displayInfo.prototype.func1=function(arg){
+        if((typeof arg.name) == "string"){
+            var output ="Name:" + arg.name+"\n";
+        }
+        alert(output);
+    };
+    displayInfo.prototype.func2=function(arg){
+        if(typeof arg.age == "number"){
+            var output ="Age:" + arg.age+"\n";
+        }
+        alert(output);
+    };
+    var house = new displayInfo();
+    arg={
+        name:"kankan",
+        age:29
+    };
+    //house.func1();
+    //house.func2(arg);
+    var A = [1,6,2,4,7,8,35,35,5,4,3,3,2,2];
+    //if(A instanceof Array){document.writeln(A.toString()+"<br />"+A.valueOf()+"<br />"+A.indexOf());}
+    A.sort(compareDownNumber);
+    //alert(A);
+    var colors = ["rad","black","pink","blue","white","green"];
+    var colors2 = colors.concat("gray",["yellow","darkPink"]);
+    //alert(colors2);
+    colors2.splice(2,1,"haha","heiehi","hehe");
+    //alert(colors2);
+    var aString = "sdlkfnoawioiwonoasg";
+    //alert(aString.lastIndexOf("w"));
+    var text = "this has been a short summer";
+    var  pattern = /(.)hort/g;
+
+    function sum(num1,num2){
+        return num1 + num2;
+    }
+    function callSum1(num1,num2){
+        return sum.apply(this,arguments);
+    }
+    function callSum2(num1,num2){
+        return sum.apply(window,[num1,num2]);
+    }
+    //alert(callSum1(10,10));
+    //alert(callSum2(10,10));
+    window.color = "red";
+    var o = {color:"blue"};
+    function sayColor() {
+        alert(this.color);
+    }
+    var obj = sayColor.bind(o);
+    var text ="cat, bdfdat, sat, mat, hat";
+    var s = text.replace(/(.at)/g,"word($1)");
+
+    var person={
+       name:"Hello",
+       age:29,
+       job:"IT",
+       sayName:function(){
+           alert(this.name);
+       }
+   };
+/*
+Configurable:能否通过delete删除属性从而重新定义属性
+Enumerable：能否通过for-in玄幻返回属性值
+Writable：能否修改属性值
+Value：包含这个属性的数据值
+*/
+
+    //原型
+    function Person(){}
+    Person.prototype.name = "Hello";
+    Person.prototype.age = 29;
+    Person.prototype.job = "IT";
+    Person.prototype.sayName = function(){
+        alert(this.name);
+    };
+    var person1 = new Person();
+    person1.name="heh";
+    //person1.sayName();
+    var a='';
+    for(var item in person){
+        a += person[item].toString();
+    };
+
+    var b=Object.getOwnPropertyDescriptor(person1,"name");
+    var c=Object.keys(person1);
+
+
+
+    String.prototype.startsWith = function(text){
+        return this.indexOf(text) ==0;
+    };
+    var msg = "Hello world";
+    alert(msg.startsWith("Hello"));
+</script>
+</body>
+</html>
+<!--
+//第五章
+//w位置方法
+indexOf();
+lastIndexOf();
+//迭代方法（（函数（3个值））（函数体））
+every();
+filter();
+forEach();
+map();
+some();
+//缩小方法(4个参数)
+reduce();
+reduceRight();
+-->
