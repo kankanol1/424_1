@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset ="UTF-8">
+        <title>文本编辑</title>
+        </head>
+<body>
+
+<script>
+    function SuperType(name){
+        this.name = name;
+        this.colors=["red","blue","green"] ;
+    }
+    SuperType.prototype.sayName = function(){
+        alert(this.name);
+    };
+    function SubType(name,age){
+        SuperType.call(this,name);
+        this.age = age;
+    }
+    SubType.prototype = new SuperType();
+    SubType.prototype.sayAge = function(){
+        alert(this.age);
+    };
+    var instance1 = new SubType("Hello",20);
+    instance1.colors.push("black");
+    alert(instance1.colors);
+    instance1.sayName();
+    instance1.sayAge();
+
+    var instance2 = new SubType("Greg",23);
+    alert(instance2.colors);
+    instance2.sayName();
+    instance2.sayAge();
+    //var instance2 = new SubType();
+
+    //instance1.colors.push("black");
+
+    //alert(instance1.name);
+    //alert(instance1.age);
+
+
+</script>
+
+</body>
+</html>
